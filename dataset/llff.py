@@ -239,6 +239,11 @@ class LLFFDataset(NeRFDataset):
         else:
             imgfiles = [os.path.join(imgdir, f) for f in sorted(os.listdir(imgdir)) if is_image(f)]
 
+        if(self.args.rand_load is not None):
+            rand_idx = np.array(np.random.choice(len(imgfiles), size = self.args.rand_load, replace=False)).flatten()
+            imgfiles = [imgfiles[idx] for idx in rand_idx]
+            poses = poses[...,rand_idx]
+
         assert(poses.shape[-1] == len(imgfiles)) # Image/Pose number does not match!
         
         if resized:

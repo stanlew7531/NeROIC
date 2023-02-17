@@ -1,0 +1,50 @@
+# Common settings
+expname: pawpatrol_geometry_v2
+model: NeROIC
+basedir: ./logs
+model_type: "geometry"
+
+# Dataset settings
+dataset_type: llff
+factor: 1
+width: 800
+rand_load: 100
+test_intv: 8
+test_offset: 1
+have_mask: True
+mask_ratio: 2
+use_bbox: True
+
+# Training settings
+num_epochs: 100
+lrate: 0.0004
+scheduler: "multistep"
+decay_epoch: 10
+decay_gamma: 0.66
+chunk: 24576 # 1024 * 24
+netchunk: 32768 # 1024 * 32
+
+# Testing settings
+i_video: 2000000
+i_traintest: 50000
+i_testepoch: 5
+
+# Rendering settings 
+N_rand: 1536
+N_samples: 64
+N_importance: 64
+use_viewdirs: True
+raw_noise_std: 0
+white_bkgd: True
+debug_green_bkgd: True
+
+# Network settings
+encode_appearance: True
+encode_transient: True
+beta_min: 0.1
+
+lambda_sil: 0.1
+optimize_camera: True
+lambda_cam: 1
+normal_smooth_alpha: 0.1
+

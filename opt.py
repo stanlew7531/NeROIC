@@ -140,6 +140,8 @@ def config_parser():
 # -- Dataset options
     parser.add_argument("--dataset_type", type=str, choices=['llff', 'nerd_real'],  default='llff', 
                         help='options: llff, nerd_real')
+    parser.add_argument("--rand_load", type=int, default=None,
+                        help='will load only N rand images from the data dir (to avoid ram overload).')
     parser.add_argument("--test_intv", type=int, default=8, 
                         help='will take every 1/N images as test set.')
     parser.add_argument("--test_offset", type=int, default=1, 
